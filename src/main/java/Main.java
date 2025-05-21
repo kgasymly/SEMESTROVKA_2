@@ -1,4 +1,5 @@
 import java.util.List;
+
 public class Main{
 public static void main(String[] args) {
     AlgorithmMetrics metrics = new AlgorithmMetrics();
@@ -13,7 +14,7 @@ public static void main(String[] args) {
     tree.insert(25);
     tree.insert(30);
 
-    System.out.println("B+ дерево после вставок:");
+    System.out.println("B+ дерево после добавлений:");
     tree.printTree();
 
     // Поиск ключа
