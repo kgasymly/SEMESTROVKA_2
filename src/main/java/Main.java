@@ -5,7 +5,7 @@ public static void main(String[] args) {
     metrics.startTimer();
     BPlusTree<Integer> tree = new BPlusTree<>(3);
 
-    // Insert elements
+    // Добавление элементов
     tree.insert(10);
     tree.insert(20);
     tree.insert(5);
@@ -16,17 +16,17 @@ public static void main(String[] args) {
     System.out.println("B+ дерево после вставок:");
     tree.printTree();
 
-    // Search for a key
+    // Поиск ключа
     int searchKey = 15;
     System.out.println("\nПоиск ключа " + searchKey + ": " +
             (tree.search(searchKey) ? "Найдено" : "Не найдено"));
 
-    // Perform a range query
+    // Выполнение запроса диапазона
     int lower = 10, upper = 25;
     List<Integer> rangeResult = tree.rangeQuery(lower, upper);
     System.out.println("\nЗапрос диапазона [" + lower + ", " + upper + "]: " + rangeResult);
 
-    // Remove a key
+    // Удаление ключа
     int removeKey = 20;
     tree.remove(removeKey);
     System.out.println("\nB+ Дерево после удаления " + removeKey + ":");

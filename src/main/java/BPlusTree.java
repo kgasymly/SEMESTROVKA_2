@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class BPlusTree<T extends Comparable<T>> {
-    // Node class
     private class Node {
         boolean isLeaf;
         List<T> keys;
