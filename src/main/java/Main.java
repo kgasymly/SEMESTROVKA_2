@@ -1,42 +1,87 @@
-import java.util.List;
+ import java.util.List;
 
-public class Main{
-public static void main(String[] args) {
-    AlgorithmMetrics metrics = new AlgorithmMetrics();
-    metrics.startTimer();
-    BPlusTree<Integer> tree = new BPlusTree<>(3);
+ public class Main {
+ public static void main(String[] args) {
+
+     AlgorithmMetrics metrics = new AlgorithmMetrics();
+     AlgorithmMetrics metricsInsert = new AlgorithmMetrics();
+     AlgorithmMetrics metricsSearchKey = new AlgorithmMetrics();
+     AlgorithmMetrics metricsRangeResult = new AlgorithmMetrics();
+     AlgorithmMetrics metricsRemoveKey = new AlgorithmMetrics();
+
+     metrics.startTimer();
+
+     BPlusTree<Integer> tree = new BPlusTree<>(3);
 
 
-    // Добавление элементов
-    tree.insert(10);
-    tree.insert(20);
-    tree.insert(5);
-    tree.insert(15);
-    tree.insert(25);
-    tree.insert(30);
 
-    System.out.println("B+ дерево после добавлений:");
-    tree.printTree();
+     // Добавление элементов
+     metricsInsert.startTimer();
 
-    // Поиск ключа
-    int searchKey = 15;
-    System.out.println("\nПоиск ключа " + searchKey + ": " +
-            (tree.search(searchKey) ? "Найдено" : "Не найдено"));
+     tree.insert(10);
+     tree.insert(20);
+     tree.insert(5);
+     tree.insert(15);
+     tree.insert(25);
+     tree.insert(30);
 
-    // Выполнение запроса диапазона
-    int lower = 10, upper = 25;
-    List<Integer> rangeResult = tree.rangeQuery(lower, upper);
-    System.out.println("\nЗапрос диапазона [" + lower + ", " + upper + "]: " + rangeResult);
+     metricsInsert.stopTimer();
 
-    // Удаление ключа
-    int removeKey = 20;
-    tree.remove(removeKey);
-    System.out.println("\nB+ Дерево после удаления " + removeKey + ":");
-    tree.printTree();
+     System.out.println("B+ дерево после добавлений:");
+     tree.printTree();
 
-    metrics.stopTimer();
-    System.out.println();
-    System.out.println("Время выполнения (нс): " + metrics.getElapsedTimeNanos());
-    System.out.println("Время выполнения (мс): " + metrics.getElapsedTimeMillis());
-    }
-}
+
+     // Поиск ключа
+     int searchKey = 15;
+
+     metricsSearchKey.startTimer();
+
+     System.out.println("\nПоиск ключа " + searchKey + ": " +
+             (tree.search(searchKey) ? "Найдено" : "Не найдено"));
+
+     metricsSearchKey.stopTimer();
+
+
+     // Выполнение запроса диапазона
+     int lower = 10, upper = 25;
+
+     metricsRangeResult.startTimer();
+
+     List<Integer> rangeResult = tree.rangeQuery(lower, upper);
+
+     metricsRangeResult.stopTimer();
+
+     System.out.println("\nЗапрос диапазона [" + lower + ", " + upper + "]: " + rangeResult);
+
+
+     // Удаление ключа
+     int removeKey = 20;
+
+     metricsRemoveKey.startTimer();
+
+     tree.remove(removeKey);
+     metricsRemoveKey.stopTimer();
+
+
+     System.out.println("\nB+ Дерево после удаления " + removeKey + ":");
+     tree.printTree();
+
+     metrics.stopTimer();
+     System.out.println();
+
+     System.out.println("Время выполнения добавлениях всех элементов в дерево (нс): " + metricsInsert.getTimeNano());
+     System.out.println("Время выполнения добавлениях всех элементов в дерево (мс): " + metricsInsert.getTimeMillis());
+
+     System.out.println("Время выполнения поиска ключа (нс): " + metricsSearchKey.getTimeNano());
+     System.out.println("Время выполнения поиска ключа (мс): " + metricsSearchKey.getTimeMillis());
+
+     System.out.println("Время выполнения запроса диапазона (нс): " + metricsRangeResult.getTimeNano());
+     System.out.println("Время выполнения запроса диапазона (мс): " + metricsRangeResult.getTimeMillis());
+
+     System.out.println("Время выполнения удаления элемента из дерева (нс): " + metricsRemoveKey.getTimeNano());
+     System.out.println("Время выполнения удаления элемента из дерева (мс): " + metricsRemoveKey.getTimeMillis());
+
+     System.out.println("Время выполнения всей программы (нс): " + metrics.getTimeNano());
+     System.out.println("Время выполнения всей программы (мс): " + metrics.getTimeMillis());
+     }
+ }
