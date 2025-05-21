@@ -255,35 +255,4 @@ public class BPlusTree<T extends Comparable<T>> {
             }
         }
     }
-
-    public static void main(String[] args) {
-        BPlusTree<Integer> tree = new BPlusTree<>(3);
-
-        // Insert elements
-        tree.insert(10);
-        tree.insert(20);
-        tree.insert(5);
-        tree.insert(15);
-        tree.insert(25);
-        tree.insert(30);
-
-        System.out.println("B+ Tree after insertions:");
-        tree.printTree();
-
-        // Search for a key
-        int searchKey = 15;
-        System.out.println("\nSearching for key " + searchKey + ": " +
-                (tree.search(searchKey) ? "Found" : "Not Found"));
-
-        // Perform a range query
-        int lower = 10, upper = 25;
-        List<Integer> rangeResult = tree.rangeQuery(lower, upper);
-        System.out.println("\nRange query [" + lower + ", " + upper + "]: " + rangeResult);
-
-        // Remove a key
-        int removeKey = 20;
-        tree.remove(removeKey);
-        System.out.println("\nB+ Tree after removing " + removeKey + ":");
-        tree.printTree();
-    }
 }
