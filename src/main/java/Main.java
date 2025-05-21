@@ -6,6 +6,7 @@ public static void main(String[] args) {
     metrics.startTimer();
     BPlusTree<Integer> tree = new BPlusTree<>(3);
 
+
     // Добавление элементов
     tree.insert(10);
     tree.insert(20);
