@@ -24,7 +24,7 @@ public class BPlusTree<T extends Comparable<T>> {
         this.t = degree;
     }
 
-    // Insert a key
+    // Добавление ключа
     public void insert(T key) {
         if (root == null) {
             root = new Node(true);
@@ -40,7 +40,7 @@ public class BPlusTree<T extends Comparable<T>> {
         }
     }
 
-    // Insert into non-full node
+    // Вставить в неполный узел
     private void insertNonFull(Node node, T key) {
         if (node.isLeaf) {
             int i = Collections.binarySearch(node.keys, key);
@@ -62,7 +62,7 @@ public class BPlusTree<T extends Comparable<T>> {
         }
     }
 
-    // Split child node
+    // Разделить дочерний узел
     private void splitChild(Node parent, int index, Node child) {
         Node newChild = new Node(child.isLeaf);
         parent.children.add(index + 1, newChild);
@@ -82,7 +82,7 @@ public class BPlusTree<T extends Comparable<T>> {
         }
     }
 
-    // Search for a key
+    // Поиск ключа
     public boolean search(T key) {
         Node current = root;
         while (current != null) {
@@ -101,7 +101,7 @@ public class BPlusTree<T extends Comparable<T>> {
         return false;
     }
 
-    // Remove a key
+    // Удаление ключа
     public void remove(T key) {
         if (root == null) {
             return;
@@ -208,7 +208,7 @@ public class BPlusTree<T extends Comparable<T>> {
         node.children.remove(index + 1);
     }
 
-    // Range query
+    // Запрос диапазона
     public List<T> rangeQuery(T lower, T upper) {
         List<T> result = new ArrayList<>();
         Node current = root;
@@ -235,7 +235,7 @@ public class BPlusTree<T extends Comparable<T>> {
         return result;
     }
 
-    // Print the tree
+    // Вывод дерева
     public void printTree() {
         printTree(root, 0);
     }
