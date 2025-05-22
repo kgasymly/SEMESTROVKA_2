@@ -1,4 +1,11 @@
- import java.util.List;
+import java.util.List;
+
+
+
+/*
+ Обычный main, который вызывает наши методы,
+  задача для нашей структуры находится в папке Task
+ */
 
  public class Main {
  public static void main(String[] args) {
@@ -69,19 +76,17 @@
      metrics.stopTimer();
      System.out.println();
 
-     System.out.println("Время выполнения добавлениях всех элементов в дерево (нс): " + metricsInsert.getTimeNano());
-     System.out.println("Время выполнения добавлениях всех элементов в дерево (мс): " + metricsInsert.getTimeMillis());
+     System.out.println("Время выполнения добавлениях всех элементов в дерево (нс): " + metricsInsert.getTimeNano() + "\n");
 
-     System.out.println("Время выполнения поиска ключа (нс): " + metricsSearchKey.getTimeNano());
-     System.out.println("Время выполнения поиска ключа (мс): " + metricsSearchKey.getTimeMillis());
+     System.out.println("Время выполнения поиска ключа (нс): " + metricsSearchKey.getTimeNano() + "\n");
 
-     System.out.println("Время выполнения запроса диапазона (нс): " + metricsRangeResult.getTimeNano());
-     System.out.println("Время выполнения запроса диапазона (мс): " + metricsRangeResult.getTimeMillis());
+     System.out.println("Время выполнения запроса диапазона (нс): " + metricsRangeResult.getTimeNano() + "\n");
 
-     System.out.println("Время выполнения удаления элемента из дерева (нс): " + metricsRemoveKey.getTimeNano());
-     System.out.println("Время выполнения удаления элемента из дерева (мс): " + metricsRemoveKey.getTimeMillis());
+     System.out.println("Время выполнения удаления элемента из дерева (нс): " + metricsRemoveKey.getTimeNano() + "\n");
 
      System.out.println("Время выполнения всей программы (нс): " + metrics.getTimeNano());
      System.out.println("Время выполнения всей программы (мс): " + metrics.getTimeMillis());
      }
+
+
  }
