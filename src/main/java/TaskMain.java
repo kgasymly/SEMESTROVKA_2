@@ -15,7 +15,7 @@ public class TaskMain {
     public static void main(String[] args) {
         File dir1 = new File("C:\\Users\\dasts\\Desktop\\Itis\\lol\\SEMESTROVKA_2\\TestsFiles");
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 2; i++) {
             BPlusTree<Student> studentTree = new BPlusTree<>(3);
             try (BufferedReader reader = new BufferedReader(new FileReader(new File(dir1, "Students" + (i+1) + ".txt")))) {
                 String line = "";
@@ -75,7 +75,7 @@ public class TaskMain {
 
             List<Student> students = studentTree.rangeQuery(from, to);
 
-            System.out.printf("\n[Результат] Студенты с ID от " + fromId + " до " + toId + "\n");
+            System.out.println("\n[Результат] Студенты с ID от " + fromId + " до " + toId);
             if (students.isEmpty()) {
                 System.out.println("Студенты не найдены");
             } else {
@@ -91,7 +91,7 @@ public class TaskMain {
 
             System.out.println("\n[Все студенты]");
             allStudents.forEach(System.out::println);
-            System.out.println("Всего студентов: " + allStudents.size());
+            System.out.println("Всего студентов: " + allStudents.size() + "\n");
 
         }
     }
