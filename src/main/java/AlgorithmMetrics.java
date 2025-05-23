@@ -4,11 +4,11 @@ public class AlgorithmMetrics {
     private long stopTime;
 
     public void startTimer() {
-        startTime = System.nanoTime(); // или System.currentTimeMillis()
+        startTime = System.nanoTime();
     }
 
     public void stopTimer() {
-        stopTime = System.nanoTime(); // или System.currentTimeMillis()
+        stopTime = System.nanoTime();
     }
 
     public long getTimeNano() {
