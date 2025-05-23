@@ -13,9 +13,9 @@ public class TaskMain {
 
 
     public static void main(String[] args) {
-        File dir1 = new File("C:\\Users\\dasts\\Desktop\\Itis\\lol\\SEMESTROVKA_2\\TestsFiles");
+        File dir1 = new File("C:\\Users\\dasts\\Desktop\\Itis\\lol\\Semes\\TestsFiles");
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             BPlusTree<Student> studentTree = new BPlusTree<>(3);
             try (BufferedReader reader = new BufferedReader(new FileReader(new File(dir1, "Students" + (i+1) + ".txt")))) {
                 String line = "";

@@ -21,7 +21,7 @@ class StudentsGenerator {
     private static final Random random = new Random();
 
     public static void main(String[] args) {
-        int numFiles = 50;
+        int numFiles = 100;
         int minStudents = 100;
         int maxStudents = 10000;
 

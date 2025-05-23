@@ -14,13 +14,13 @@ public class TaskMainMetrics {
 
 
     public static void main(String[] args) {
-        File dir1 = new File("C:\\Users\\dasts\\Desktop\\Itis\\lol\\SEMESTROVKA_2\\TestsFiles");
+        File dir1 = new File("C:\\Users\\dasts\\Desktop\\Itis\\lol\\Semes\\TestsFiles");
 
 
         BPlusTree<Student> studentTree;
 
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             AlgorithmMetrics findMetrics = new AlgorithmMetrics();
             AlgorithmMetrics insertMetrics = new AlgorithmMetrics();
             AlgorithmMetrics removeMetrics = new AlgorithmMetrics();
@@ -41,13 +41,14 @@ public class TaskMainMetrics {
                         Student student = new Student(id, name, gpa);
                         insertMetrics.startTimer();
                         studentTree.insert(student);
-                        insertMetrics.stopTimer();;
-                        tempMetrics += insertMetrics.getTimeNano();
+                        insertMetrics.stopTimer();
+                        tempMetrics = insertMetrics.getTimeNano();
+
 
 //                        System.out.println("[Добавлен] " + student);
                     }
                 }
-                System.out.println("Время добавления всех студентов в дерево: " + tempMetrics);
+                //System.out.println(tempMetrics);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -60,8 +61,13 @@ public class TaskMainMetrics {
             );
 
             int size = allStudents.size();
+            //System.out.println(size);
+            Random random = new Random();
 
-            int tempId = 10000 + (size) / 2;
+            int rand = random.nextInt(size);
+            int tempId = 10000 + rand;
+
+
 
             //Поиск студента по его айди с выводом его данных
 
@@ -70,7 +76,7 @@ public class TaskMainMetrics {
             findMetrics.startTimer();
             List<Student> result = studentTree.rangeQuery(tempStudent, tempStudent);
             findMetrics.stopTimer();
-            System.out.println("Время поиска студента в дереве: " + findMetrics.getTimeNano());
+            //System.out.println(findMetrics.getTimeNano());
 
 //            if (!result.isEmpty()) {
 //                System.out.println("\n[Найден] " + result.get(0));
@@ -82,7 +88,8 @@ public class TaskMainMetrics {
 
             // Удаление студента по его айди из дерева
 
-            tempId+=20;
+            rand = random.nextInt(size);
+            tempId = 10000 + rand;
 
             tempStudent = new Student(tempId, "", 0.0);
             result = studentTree.rangeQuery(tempStudent, tempStudent);
@@ -90,10 +97,10 @@ public class TaskMainMetrics {
                 removeMetrics.startTimer();
                 studentTree.remove(tempStudent);
                 removeMetrics.stopTimer();
-                System.out.println("Время удаления студента из дерева: " + removeMetrics.getTimeNano() + "\n");
+                System.out.println(removeMetrics.getTimeNano());
 //                System.out.println("[Удален] " + result.get(0));
             } else {
-                System.out.println("[Ошибка] Студент с ID " + tempId + " не найден");
+               // System.out.println("[Ошибка] Студент с ID " + tempId + " не найден");
             }
 
             // Поиск в диапазоне от айди до айди
